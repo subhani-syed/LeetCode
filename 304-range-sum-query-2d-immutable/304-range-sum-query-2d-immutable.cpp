@@ -10,7 +10,8 @@ public:
                 t[i][j] = M[i-1][j-1] + t[i-1][j] + t[i][j-1] - t[i-1][j-1];
     }    
     int sumRegion(int R1, int C1, int R2, int C2) {
-        return (int)(t[R2+1][C2+1] - t[R2+1][C1] - t[R1][C2+1] + t[R1][C1]);
+        int sum = t[R2+1][C2+1] - t[R2+1][C1] - t[R1][C2+1] + t[R1][C1];
+        return sum;
     }
 };
 
