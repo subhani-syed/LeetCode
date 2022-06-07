@@ -8,7 +8,10 @@ public:
                 cursum = 0;
             }
             cursum += nums[i];
-            maxsum = max(maxsum,cursum);
+            if(maxsum<cursum){
+                maxsum = cursum;
+            }
+            // maxsum = max(maxsum,cursum);
         }
         return maxsum;
     }
