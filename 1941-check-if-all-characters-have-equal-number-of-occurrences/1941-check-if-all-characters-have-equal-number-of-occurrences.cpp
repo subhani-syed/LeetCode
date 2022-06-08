@@ -5,14 +5,12 @@ public:
         for(int i=0;i<s.length();i++){
             ump[s[i]]++;
         }
-        set<int> st;
+        int val = ump[s[0]];
         for(auto i = ump.begin();i!=ump.end();i++){
-            st.insert(i->second);
+            if(i->second!=val){
+                return false;
+            }
         }
-        if(st.size()>1){
-            return false;
-        }else{
-            return true;            
-        }
+        return true;
     }
 };
