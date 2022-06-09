@@ -5,10 +5,12 @@ public:
         for(int i=0;i<nums.size();i++){
             if(nums[i]==target){
                 return i;
-            }else if (nums[i]>target){
-                return i;
             }else{
-                k = i+1;
+                if(nums[i]>target){
+                    return i;
+                }else{
+                    k = i+1;
+                }
             }
         }
         return k;
