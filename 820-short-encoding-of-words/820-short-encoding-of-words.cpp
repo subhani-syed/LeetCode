@@ -7,9 +7,9 @@ public:
                 s1.erase(word.substr(i));
             }
         }
-        int out =0;
+        int out = s1.size();
         for(auto a:s1){
-            out+= a.size()+1;
+            out+= a.size();
         }
         return out;
     }
