@@ -19,19 +19,21 @@ public:
 */
 
 class Solution {
-public:
-    vector<int>out;
-    void pp(Node* head){
-        if(head==NULL)return;
-        else{
-            out.push_back(head->val);
-            for(auto x:head->children){
-                pp(x);
-            }
+private:
+    void travel(Node* root, vector<int>& result) {
+        if (root == nullptr) {
+            return;
+        }
+        
+        result.push_back(root -> val);
+        for (Node* child : root -> children) {
+            travel(child, result);
         }
     }
+public:
     vector<int> preorder(Node* root) {
-        pp(root);
-        return out;
+        vector<int> result;
+        travel(root, result);
+        return result;
     }
 };
