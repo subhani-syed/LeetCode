@@ -7,15 +7,11 @@ public:
         int mid;
         int high = n;
         int low = 1;
-        while(low<=high){
+        while(low<high){
             mid = low + (high-low)/2;
-            if(isBadVersion(mid)==true && isBadVersion(mid-1)==false)
-                return mid;
-            else if(isBadVersion(mid)==true && isBadVersion(mid-1)==true)
-                high = mid-1;
-            else
-                low = mid+1;
+            if(isBadVersion(mid)) high =mid;
+            else low = mid + 1;
         }
-        return 1;
+        return low;
     }
 };
