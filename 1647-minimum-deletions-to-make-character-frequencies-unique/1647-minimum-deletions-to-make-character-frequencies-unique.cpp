@@ -1,27 +1,18 @@
 class Solution {
 public:
     int minDeletions(string s) {
-        int out = 0;
-        unordered_map<char,int>ump;
-        for(char x:s){
-            ump[x]++;
-        }
-        set<int>s1;
-        int num;
-        for(auto x:ump)
-        {
-            num = x.second;
-            if(s1.find(num)==s1.end()){
-                s1.insert(num);
-            }
-            else{
-                while(s1.find(num)!=s1.end() && num>0){
-                    num = num-1;
-                    out = out+1;
-                }
-                s1.insert(num);
+        vector<int> freq (26, 0);        
+        for (char c : s) freq[c - 'a']++;
+        sort(freq.begin(), freq.end());
+        int del = 0;
+        for (int i = 24; i >= 0; i--) {
+            if(freq[i] == 0) break;            
+            if(freq[i] >= freq[i+1]){
+                int prev = freq[i];
+                freq[i] = max(0, freq[i+1] -1);
+                del += prev - freq[i]; 
             }
         }
-        return out;
+        return del;
     }
 };
