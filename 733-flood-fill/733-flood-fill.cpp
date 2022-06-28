@@ -1,22 +1,23 @@
 class Solution {
 public:
-    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
-        int val = image[sr][sc];
-        fill(image,sr,sc,color,val);
-        return image;
+    
+    void dfs(vector<vector<int>>& image, int i, int j,int val, int newColor)
+    {
+        if(i<0 || i>=image.size() || j<0 || j>= image[0].size() || image[i][j] == newColor || image[i][j] != val)
+        {
+            return;
+        }
+        image[i][j] = newColor;
+        dfs(image,i-1,j,val,newColor);
+        dfs(image,i+1,j,val,newColor);
+        dfs(image,i,j-1,val,newColor);
+        dfs(image,i,j+1,val,newColor);
     }
     
-    void fill(vector<vector<int>>&img,int sr,int sc,int clr ,int val){
-        if( sr<0 ||sr>=img.size() || sc<0||sc>=img[0].size() || img[sr][sc]!=val || img[sr][sc]==clr ){
-            return;
-        }else{
-            img[sr][sc] = clr;
-            fill(img,sr-1,sc,clr,val);
-            fill(img,sr+1,sc,clr,val);
-            fill(img,sr,sc-1,clr,val);
-            fill(img,sr,sc+1,clr,val);
-        }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor)
+    {
+        int val = image[sr][sc];
+        dfs(image,sr,sc,val,newColor);
+        return image;
     }
 };
-// //         if in bounds then fill the present pixel
-// //         then call the function on the all four adjacent pixels
