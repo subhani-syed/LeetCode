@@ -15,12 +15,6 @@ public:
             }
             ump[x]++;
         }
-        
-        // for(int i=0;i<arr.size();i++){
-        //     if(ump.find(arr[i]*2)!=ump.end()){
-        //         out = 1;
-        //     }
-        // }
         if(out==1){
             return true;
         }else{
